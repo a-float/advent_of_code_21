@@ -1,0 +1,5 @@
+Base time 6195ms
+Add stack 9973ms
+Limit vec1 byt points.size() - 12 5221ms
+Add breaking after a match 5096ms
+Switch to performance mode 1900ms
