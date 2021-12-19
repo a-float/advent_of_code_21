@@ -1,0 +1,3 @@
+In first part of the puzzle using min-heap decreased the time of execution for a 100x100 grid 5 times. 2.5s -> 0.5s
+Solving for part two's 500x500 grid takes 5.6s instead of multiple minutes.
+Time complexity for each min-heap operations is O(log n), while naive sort is O(nlogn) for each extraction.
