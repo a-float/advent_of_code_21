@@ -64,7 +64,7 @@ a5 = 3 so a6  = 9
 a8 = 9 so a11 = 6
 a9 = 6 so a10 = 9
 
-Final answer is 79979391969649
+Max model number is 79979391969649
 
 Part 2
 
@@ -76,3 +76,5 @@ a3 = 3 so a4  = 1
 a5 = 1 so a6  = 7
 a8 = 4 so a11 = 1
 a9 = 1 so a10 = 4
+
+Min model number is 16931171414113
