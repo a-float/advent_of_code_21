@@ -1,4 +1,4 @@
-﻿string[] input = System.IO.File.ReadAllText(@"./puzzle_data.txt").Split(",");
+﻿string[] input = System.IO.File.ReadAllText(@"./data.txt").Split(",");
 long[] ages = Array.ConvertAll(input, s => long.Parse(s));
 Dictionary<long, ulong> dict = new Dictionary<long, ulong>();
 for (long i = 0; i < 9; i++)

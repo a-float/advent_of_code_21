@@ -88,24 +88,16 @@ struct Scanner {
         for (int rot = 0; rot < 24; rot++) {
             for (int i = 0; i < this->points.size() - 12; i++) {
                 Vector3 vec1 = this->points.at(i);
-                // cout << "Starting from " << vec1.toString() << endl;
                 for (auto& vec2 : other->points) {  // first match from the other scanner
                     int matches = 0;
                     Vector3 otherPos = pos.add(vec1.rotated(this->rotation).sub(vec2.rotated(rot)));
                     for (auto& vec3 : other->points) {
-                        // cout << "Pos " << pos.toString() << " vec 1 " << vec1.toString() << " vec 3 " << vec3.toString() << " rotated " << vec2.rotated(rot).toString() << " other pos " << otherPos.toString() << endl;
-                        // cout << "Comparing " << matches << " rot " << rot << " at " << vec1.toString() << " to " << vec2.toString() << endl;
                         for (auto& vec4 : this->points) {
                             if (pos.add(vec4.rotated(this->rotation)).equals(otherPos.add(vec3.rotated(rot)))) {
-                                // cout << "match " << matches << " between " << vec3.toString() << " and " << vec4.toString() << endl;
                                 matches++;
                                 if (matches == 12) {
-                                    // cout << "final match" << endl;
                                     *correctRotationNo = rot;
                                     *otherPosition = otherPos;
-                                    // otherPosition->x = otherPos.x;
-                                    // otherPosition->y = otherPos.y;
-                                    // otherPosition->z = otherPos.z;
                                     return true;
                                 }
                                 break;

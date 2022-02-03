@@ -42,7 +42,6 @@ long partOne(int p1, int p2) {
 
 // idx                    0  1  2  3  4  5  6  7  8  9
 long possiblePaths[10] = {0, 0, 0, 1, 3, 6, 7, 6, 3, 1};
-
 void recu(Player p1, Player p2, int turn, long long mult, long long* wins1, long long* wins2) {
     if (p1.score >= 21) {
         *wins1 += mult;
@@ -69,6 +68,9 @@ void recu(Player p1, Player p2, int turn, long long mult, long long* wins1, long
     }
 }
 
+// The trick:
+// it doesn't matter what numbers we got while throwing the dice three times. All that matters
+// is in how many ways it could have happened
 long partTwo(int pos1, int pos2) {
     long long wins1 = 0;
     long long wins2 = 0;

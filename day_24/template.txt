@@ -1,0 +1,78 @@
+The command template
+Performed 14 times - once for each digit of the model number
+
+inp w
+mul x 0
+add x z
+mod x 26
+div z \d0
+add x \d1
+eql x w // input used here
+eql x 0
+mul y 0
+add y 25
+mul y x
+add y 1
+mul z y
+mul y 0
+add y w // input used here
+add y \d2
+mul y x
+add z y // here y has to be always equal to 0
+
+w is the input = a non zero digit
+d0 is either 1 or 26
+when z is divied by 26, x is decreased or not changed
+when z is divided by 1, x is increased
+z is the stack storing digits in 26 base system. 
+z /= 26 decreases stack size by 1
+z % 26 returnns the top value
+
+command template in a more readable format:
+w = input()
+x = z % 26 + d1             # get top from the stack + d1
+z /= d0                     # maybe pop decrease stack size
+if x != w:                  # x holds 1
+    z = 26 * z + w + d2     # push w + d2 on the stack
+else:                       # x holds 0
+    pass
+
+d0 = [1,  1,  1,  1,   26,  1, 26,  26,  1,  1, 26,  26,  26, 26]
+d1 = [14, 13, 13, 12, -12, 12, -2, -11, 13, 14,  0, -12, -13, -6]
+d2 = [8,   8,  3, 10,   8,  8,  8,   5,  9,  3,  4,   9,   2,  7]
+
+judging from d0 values there are 7 forced pushes and 7 pops available
+if d0 == 1 x != w, because d1 values are bigger than max w
+for each d0 == 1, a value will be pushed onto stack
+every pop must be
+
+Sums of push d2 values and pop d1 values must match the differences between appropiate input values
+1st pop: a4 + 12 = a3 + 10  => a4 = a3 - 2
+2nd pop: a6 + 2  = a5 + 8   => a6 = a5 + 6
+3rd pop: a7 + 11 = a2 + 3   => a7 = a2 - 8
+4th pop: a10 = a9 + 3
+5th pop: a11 + 12 = a8 + 9  => a11 = a8 - 3
+6th pop: a12 + 13 = a1 + 8  => a12 = a1 - 5
+7th pop: a13 + 6  = a0 + 8  => a13 = a0 + 2
+
+a0 ++ a1 ++ a2 ++ ... ++ a13 = max (++ = concatenation)
+a0 = 7 so a13 = 9
+a1 = 9 so a12 = 4
+a2 = 9 so a7  = 1
+a3 = 9 so a4  = 7
+a5 = 3 so a6  = 9
+a8 = 9 so a11 = 6
+a9 = 6 so a10 = 9
+
+Final answer is 79979391969649
+
+Part 2
+
+Now looking for the minimum: a0 ++ a1 ++ a2 ++ ... ++ a13 = min
+a0 = 1 so a13 = 3
+a1 = 6 so a12 = 1
+a2 = 9 so a7  = 1
+a3 = 3 so a4  = 1
+a5 = 1 so a6  = 7
+a8 = 4 so a11 = 1
+a9 = 1 so a10 = 4
